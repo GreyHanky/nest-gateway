@@ -11,6 +11,7 @@ import {
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { BusinessException } from 'src/common/exceptions/business.exception';
 
 @Controller('user')
 export class UserController {
@@ -22,13 +23,13 @@ export class UserController {
   }
 
   @Get()
-  @Version('1')
+  // @Version('1')
   findAll() {
     return this.userService.findAll();
   }
 
   @Get(':id')
-  @Version('1')
+  // @Version('1')
   findOne(@Param('id') id: string) {
     return this.userService.findOne(+id);
   }
@@ -41,5 +42,17 @@ export class UserController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.userService.remove(+id);
+  }
+
+  @Get('findBusinessError')
+  // @Version([VERSION_NEUTRAL, '1'])
+  findBusinessError() {
+    const a: any = {};
+    try {
+      console.log(a.b.c);
+    } catch (error) {
+      throw new BusinessException('你这个参数错了');
+    }
+    return this.userService.findAll();
   }
 }
