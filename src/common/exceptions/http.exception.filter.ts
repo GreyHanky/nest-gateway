@@ -26,6 +26,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
         message: error['message'],
         success: false,
       });
+      request.log.error(exception);
       return;
     }
 
