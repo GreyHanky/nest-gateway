@@ -5,8 +5,10 @@ import {
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
 import { resolve, join } from 'path';
+import * as cookieParser from 'cookie-parser';
 
 import fastify from 'fastify';
+import fastifyCookie from '@fastify/cookie';
 import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './common/exceptions/base.exception.filter';
 import { HttpExceptionFilter } from './common/exceptions/http.exception.filter';
@@ -26,8 +28,20 @@ async function bootstrap() {
     new FastifyAdapter(fastifyInstance),
   );
 
+
+  app.register(fastifyCookie, {
+    secret: 'my-secret', // for cookies signature
+  });
+
   app.useGlobalInterceptors(new TransformInterceptor());
   app.useGlobalFilters(new AllExceptionsFilter(), new HttpExceptionFilter());
+
+  // 设置全局接口前缀
+  app.setGlobalPrefix('api');
+
+  // 格式化 cookie
+  app.use(cookieParser());
+
 
   app.enableVersioning({
     type: VersioningType.URI,

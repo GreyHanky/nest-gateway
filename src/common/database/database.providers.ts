@@ -9,7 +9,7 @@ const { MONGODB_CONFIG } = getConfig();
 const MONGODB_DATABASE_CONFIG = {
   ...MONGODB_CONFIG,
   type: databaseType,
-  entities: [
+  entities: [   
     path.join(
       __dirname,
       `../../**/*.${MONGODB_CONFIG.entities}.entity{.ts,.js}`,
@@ -29,3 +29,4 @@ export const DatabaseProviders = [
     },
   },
 ];
+    
