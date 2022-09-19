@@ -1,5 +1,5 @@
 import { CacheModule, Module } from '@nestjs/common';
-import { UserModule } from './user/user.module';
+import { UserModule } from './userCenter/user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { getConfig } from './utils';
 import * as redisStore from 'cache-manager-redis-store';

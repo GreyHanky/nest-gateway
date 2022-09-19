@@ -16,7 +16,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { GetTokenByApplications } from './auth.dto';
 import { Public } from './constants';
 import { PayloadUser } from '@/helper';
-import { FeishuService } from '@/user/feishu/feishu.service';
+import { FeishuService } from '@/userCenter/user/feishu/feishu.service';
 import { FastifyReply } from 'fastify'
 
 @ApiTags('用户认证')
