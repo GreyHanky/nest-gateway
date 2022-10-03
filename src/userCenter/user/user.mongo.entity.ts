@@ -3,7 +3,7 @@ import { Entity, Column, UpdateDateColumn, ObjectIdColumn } from 'typeorm';
 @Entity()
 export class User {
   @ObjectIdColumn()
-  id?: number;
+  id?: string;
 
   @Column({ default: null })
   name: string;

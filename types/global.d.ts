@@ -14,7 +14,7 @@ declare class CustomPaginationMeta {
 
 declare type Payload = {
   status?: number;
-  userId: number;
+  userId: string;
   username: string;
   name: string;
   email: string;
