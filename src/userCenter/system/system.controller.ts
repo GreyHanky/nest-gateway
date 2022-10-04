@@ -3,10 +3,11 @@ import { SystemService } from './system.service';
 import { CreateSystemDto } from './dto/create-system.dto';
 import { UpdateSystemDto } from './dto/update-system.dto';
 import { DeleteSystemDto } from './dto/delete-system.dto';
-import { ApiOperation } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { PayloadUser } from '@/helper';
 import { BusinessException } from '@/common/exceptions/business.exception';
 
+@ApiTags('系统')
 @Controller('system')
 export class SystemController {
   constructor(private readonly systemService: SystemService) { }

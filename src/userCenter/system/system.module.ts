@@ -7,6 +7,7 @@ import { SystemProviders } from './system.providers';
 @Module({
   imports: [DatabaseModule],
   controllers: [SystemController],
-  providers: [SystemService, ...SystemProviders]
+  providers: [SystemService, ...SystemProviders],
+  exports: [SystemService]
 })
 export class SystemModule { }
