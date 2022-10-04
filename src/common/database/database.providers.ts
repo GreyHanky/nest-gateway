@@ -4,6 +4,7 @@ import * as path from 'path';
 import { UserRole } from '@/userCenter/user-role/entities/user-role.mysql.entity';
 import { System } from '@/userCenter/system/entities/system.mysql.entity';
 import { Resource } from '@/userCenter/resource/entities/resource.mysql.entity';
+import { Privilage } from '../../userCenter/privilage/entities/privilage.mysql.entity';
 
 // 设置数据库类型
 const { MONGODB_CONFIG, MYSQL_CONFIG } = getConfig();
@@ -20,7 +21,7 @@ const MONGODB_DATABASE_CONFIG = {
 
 const MYSQL_DATABASE_CONFIG = {
   ...MYSQL_CONFIG,
-  entities: [UserRole, System, Resource]
+  entities: [UserRole, System, Resource, Privilage]
 }
 
 const MONGODB_DATA_SOURCE = new DataSource(MONGODB_DATABASE_CONFIG);

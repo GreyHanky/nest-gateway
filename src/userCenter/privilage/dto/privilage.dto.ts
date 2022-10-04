@@ -1,11 +1,12 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty } from "class-validator";
-import { Action } from "../entities/privilage.mysql.entity";
+import { Action, PrivilegeStatus } from "../entities/privilage.mysql.entity";
 import { PartialType } from '@nestjs/mapped-types';
+import { PaginationParams } from "types/type";
 
 export class CreatePrivilageDto {
 
-  @ApiProperty({ example: '2', description: '系统一' })
+  @ApiProperty({ example: '1', description: '系统一' })
   @IsNotEmpty()
   systemId: number;
 
@@ -13,7 +14,7 @@ export class CreatePrivilageDto {
   @IsNotEmpty()
   name: string;
 
-  @ApiProperty({ example: 'page', description: '类型' })
+  @ApiProperty({ example: 'system1-abc', description: '类型' })
   @IsNotEmpty()
   resourceKey: string;
 
@@ -26,6 +27,16 @@ export class CreatePrivilageDto {
 
 }
 
+export class DisablePrivilegeDto {
+  @IsNotEmpty()
+  @ApiProperty({ example: '1', description: '权限ID' })
+  privilegeId: number;
+
+  @IsNotEmpty()
+  @ApiProperty({ example: '1', description: '权限状态', enum: PrivilegeStatus })
+  status: number;
+}
+
 
 export class DeletePrivilageDto {
   @ApiProperty({ example: '1', description: '权限id' })
@@ -36,6 +47,21 @@ export class DeletePrivilageDto {
 export class UpdatePrivilageDto extends PartialType(CreatePrivilageDto) {
   @ApiProperty({ example: '1', description: '权限ID' })
   @IsNotEmpty()
-  id:number
+  id: number
 }
 
+
+
+export class PrivilegeListWithPaginationDto {
+  @ApiProperty({ example: '', description: '查询关键词' })
+  keyword?: string;
+
+  @ApiProperty({ example: { pageSize: 10, currentPage: 1 } })
+  page?: PaginationParams;
+}
+
+export class ListAllPrivilegeDto {
+  @IsNotEmpty()
+  @ApiProperty({ example: '2', description: '系统ID' })
+  systemId: number;
+}

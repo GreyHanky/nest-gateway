@@ -1,4 +1,4 @@
-import { PrimaryGeneratedColumn, CreateDateColumn, Column, UpdateDateColumn } from "typeorm";
+import { PrimaryGeneratedColumn, CreateDateColumn, Column, UpdateDateColumn, Entity } from "typeorm";
 
 
 
@@ -17,6 +17,7 @@ export enum Action {
 }
 
 
+@Entity()
 export class Privilage {
   @PrimaryGeneratedColumn()
   id?: number
@@ -31,13 +32,13 @@ export class Privilage {
   action: string;
 
   @Column({default: PrivilegeStatus.ALLOW})
-  status: PrivilegeStatus
+  status?: PrivilegeStatus
 
   @Column()
   name: string;
 
   @Column()
-  description: string;
+  description?: string;
 
   @CreateDateColumn()
   createTime?: string;
