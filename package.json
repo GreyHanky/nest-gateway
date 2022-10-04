@@ -43,6 +43,7 @@
     "fastify-cookie": "^5.7.0",
     "mongoose": "^6.5.3",
     "mysql2": "^2.3.3",
+    "nestjs-typeorm-paginate": "^4.0.2",
     "passport": "^0.6.0",
     "passport-custom": "^1.1.1",
     "passport-jwt": "^4.0.0",
