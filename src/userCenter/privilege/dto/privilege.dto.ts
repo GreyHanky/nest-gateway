@@ -1,10 +1,10 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty } from "class-validator";
-import { Action, PrivilegeStatus } from "../entities/privilage.mysql.entity";
+import { Action, PrivilegeStatus } from "../entities/privilege.mysql.entity";
 import { PartialType } from '@nestjs/mapped-types';
 import { PaginationParams } from "types/type";
 
-export class CreatePrivilageDto {
+export class CreatePrivilegeDto {
 
   @ApiProperty({ example: '1', description: '系统一' })
   @IsNotEmpty()
@@ -38,13 +38,13 @@ export class DisablePrivilegeDto {
 }
 
 
-export class DeletePrivilageDto {
+export class DeletePrivilegeDto {
   @ApiProperty({ example: '1', description: '权限id' })
   @IsNotEmpty()
   privilageId: number
 }
 
-export class UpdatePrivilageDto extends PartialType(CreatePrivilageDto) {
+export class UpdatePrivilegeDto extends PartialType(CreatePrivilegeDto) {
   @ApiProperty({ example: '1', description: '权限ID' })
   @IsNotEmpty()
   id: number

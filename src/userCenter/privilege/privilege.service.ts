@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { In, Repository } from 'typeorm';
-import { PrivilegeListWithPaginationDto } from './dto/privilage.dto';
-import { Privilage } from './entities/privilage.mysql.entity';
+import { PrivilegeListWithPaginationDto } from './dto/privilege.dto';
+import { Privilege } from './entities/privilege.mysql.entity';
 import { Pagination, paginate } from 'nestjs-typeorm-paginate';
 import { isNotEmpty } from 'class-validator';
 import { getPaginationOptions } from '@/helper';
@@ -9,10 +9,10 @@ import { getPaginationOptions } from '@/helper';
 @Injectable()
 export class PrivilageService {
 
-  constructor(@Inject('PRIVILAGE_DATABASE') private privilageRepository: Repository<Privilage>) { }
+  constructor(@Inject('PRIVILAGE_DATABASE') private privilageRepository: Repository<Privilege>) { }
 
 
-  create(createPrivilageDto: Privilage) {
+  create(createPrivilageDto: Privilege) {
     return this.privilageRepository.save(createPrivilageDto);
   }
 
@@ -39,7 +39,7 @@ export class PrivilageService {
     })
   }
 
-  update(updatePrivilageDto: Privilage) {
+  update(updatePrivilageDto: Privilege) {
     return this.privilageRepository.save(updatePrivilageDto);
   }
 
@@ -50,7 +50,7 @@ export class PrivilageService {
   async paginate(
     searchParams: PrivilegeListWithPaginationDto,
     page: PaginationParams,
-  ): Promise<Pagination<Privilage, CustomPaginationMeta>> {
+  ): Promise<Pagination<Privilege, CustomPaginationMeta>> {
     const queryBuilder = this.privilageRepository.createQueryBuilder('privilege');
     queryBuilder.orderBy('privilege.createTime', 'DESC');
 
@@ -61,7 +61,7 @@ export class PrivilageService {
       });
     }
 
-    return paginate<Privilage, CustomPaginationMeta>(
+    return paginate<Privilege, CustomPaginationMeta>(
       queryBuilder,
       getPaginationOptions(page),
     );

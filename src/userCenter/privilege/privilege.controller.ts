@@ -1,8 +1,8 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { PrivilageService } from './privilage.service';
-import { CreatePrivilageDto, UpdatePrivilageDto, DeletePrivilageDto, DisablePrivilegeDto, PrivilegeListWithPaginationDto, ListAllPrivilegeDto } from './dto/privilage.dto';
+import { PrivilageService } from './privilege.service';
+import { CreatePrivilegeDto, UpdatePrivilegeDto, DeletePrivilegeDto, DisablePrivilegeDto, PrivilegeListWithPaginationDto, ListAllPrivilegeDto } from './dto/privilege.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { Privilage } from './entities/privilage.mysql.entity';
+import { Privilege } from './entities/privilege.mysql.entity';
 import { ResourceService } from '../resource/resource.service';
 import { SystemService } from '../system/system.service';
 import { BusinessException } from '@/common/exceptions/business.exception';
@@ -21,8 +21,8 @@ export class PrivilageController {
     summary: '创建权限'
   })
   @Post('/create')
-  async create(@Body() createPrivilageDto: CreatePrivilageDto) {
-    const privilege: Privilage = {
+  async create(@Body() createPrivilageDto: CreatePrivilegeDto) {
+    const privilege: Privilege = {
       systemId: createPrivilageDto.systemId,
       name: createPrivilageDto.name,
       resourceKey: createPrivilageDto.resourceKey,
@@ -43,10 +43,10 @@ export class PrivilageController {
   })
   @Post('/update')
   update(
-    @Body() updatePrivilageDto: UpdatePrivilageDto
+    @Body() updatePrivilageDto: UpdatePrivilegeDto
   ) {
 
-    const updatePrivilege: Privilage = {
+    const updatePrivilege: Privilege = {
       systemId: updatePrivilageDto.systemId,
       name: updatePrivilageDto.name,
       resourceKey: updatePrivilageDto.resourceKey,
@@ -54,32 +54,32 @@ export class PrivilageController {
       description: updatePrivilageDto.description
     }
 
-    const privilage = this.privilageService.findByid(updatePrivilageDto.id);
-    if (!privilage) {
+    const privilege = this.privilageService.findByid(updatePrivilageDto.id);
+    if (!privilege) {
       throw new BusinessException('未找到id为:' + updatePrivilege.id + '的权限')
     }
 
-    this.privilageService.update({ ...privilage, ...updatePrivilege })
+    this.privilageService.update({ ...privilege, ...updatePrivilege })
   }
 
   @ApiOperation({
     summary: '删除权限'
   })
   @Post('/delete')
-  remove(@Body() dto: DeletePrivilageDto) {
+  remove(@Body() dto: DeletePrivilegeDto) {
     return this.privilageService.remove(dto.privilageId);
   }
 
 
   @Post('/changeStatus')
   async changeStatus(@Body() dto: DisablePrivilegeDto) {
-    const privilage = await this.privilageService.findByid(dto.privilegeId);
+    const privilege = await this.privilageService.findByid(dto.privilegeId);
 
-    if (!privilage) {
+    if (!privilege) {
       throw new BusinessException('未找到id为:' + dto.privilegeId + '的权限')
     }
 
-    return this.privilageService.update({ ...privilage, status: dto.status })
+    return this.privilageService.update({ ...privilege, status: dto.status })
   }
 
 

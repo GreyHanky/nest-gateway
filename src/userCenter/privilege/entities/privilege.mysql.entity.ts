@@ -18,7 +18,7 @@ export enum Action {
 
 
 @Entity()
-export class Privilage {
+export class Privilege {
   @PrimaryGeneratedColumn()
   id?: number
 

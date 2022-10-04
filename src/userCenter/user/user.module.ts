@@ -5,9 +5,7 @@ import { UserService } from './user.service';
 import { UserProviders } from './user.providers';
 import { FeishuController } from './feishu/feishu.controller';
 import { FeishuService } from './feishu/feishu.service';
-import { SystemModule } from '../system/system.module';
-import { ResourceModule } from '../resource/resource.module';
-import { PrivilageModule } from '../privilage/privilage.module';
+import { PrivilageModule } from '../privilege/privilege.module';
 
 @Module({
   imports: [DatabaseModule, PrivilageModule],
