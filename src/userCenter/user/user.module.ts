@@ -6,9 +6,10 @@ import { UserProviders } from './user.providers';
 import { FeishuController } from './feishu/feishu.controller';
 import { FeishuService } from './feishu/feishu.service';
 import { SystemModule } from '../system/system.module';
+import { ResourceModule } from '../resource/resource.module';
 
 @Module({
-  imports: [DatabaseModule, SystemModule],
+  imports: [DatabaseModule, SystemModule,ResourceModule],
   controllers: [FeishuController, UserController],
   providers: [...UserProviders, UserService, FeishuService],
   exports: [UserService, FeishuService],
