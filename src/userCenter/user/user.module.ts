@@ -6,9 +6,12 @@ import { UserProviders } from './user.providers';
 import { FeishuController } from './feishu/feishu.controller';
 import { FeishuService } from './feishu/feishu.service';
 import { RoleModule } from '../role/role.module';
+import { UserRoleModule } from '../user-role/user-role.module';
+import { PrivilageModule } from '../privilege/privilege.module';
+import { RolePrivilegeModule } from '../role-privilege/role-privilege.module';
 
 @Module({
-  imports: [DatabaseModule, RoleModule],
+  imports: [DatabaseModule, RoleModule, UserRoleModule, PrivilageModule, RolePrivilegeModule],
   controllers: [FeishuController, UserController],
   providers: [...UserProviders, UserService, FeishuService],
   exports: [UserService, FeishuService],

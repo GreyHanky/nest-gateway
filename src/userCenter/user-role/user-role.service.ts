@@ -10,13 +10,13 @@ export class UserRoleService {
   ) { }
 
   listByUserId(userId: number, systemId: number) {
-    this.userRoleRepository.find({
+    return this.userRoleRepository.find({
       where: { userId, systemId }
     })
   }
 
   deleteByUserId(userId: number, systemId: number) {
-    this.userRoleRepository.delete({ userId, systemId })
+   return this.userRoleRepository.delete({ userId, systemId })
   }
 
   async setUserRoles(userId: number, systemId: number, roleIds: number[]) {

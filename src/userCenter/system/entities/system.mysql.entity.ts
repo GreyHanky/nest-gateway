@@ -13,7 +13,7 @@ export class System {
   description: string;
 
   @Column()
-  creatorId?: string;
+  creatorId?: number;
 
   @Column()
   creatorName?: string;

@@ -7,6 +7,7 @@ import { Resource } from '@/userCenter/resource/entities/resource.mysql.entity';
 import { Privilege } from '@/userCenter/privilege/entities/privilege.mysql.entity';
 import { RolePrivilege } from '@/userCenter/role-privilege/entities/role-privilege.mysql.entity';
 import { Role } from '../../userCenter/role/entities/role.mysql.entity';
+import { User } from '../../userCenter/user/entities/user.mysql.entity';
 
 // 设置数据库类型
 const { MONGODB_CONFIG, MYSQL_CONFIG } = getConfig();
@@ -23,7 +24,7 @@ const MONGODB_DATABASE_CONFIG = {
 
 const MYSQL_DATABASE_CONFIG = {
   ...MYSQL_CONFIG,
-  entities: [UserRole, System, Resource, Privilege, RolePrivilege,Role]
+  entities: [User, UserRole, System, Resource, Privilege, RolePrivilege, Role]
 }
 
 const MONGODB_DATA_SOURCE = new DataSource(MONGODB_DATABASE_CONFIG);

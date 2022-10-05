@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { FeishuUserInfo } from 'src/userCenter/user/feishu/feishu.dto';
 import { FeishuService } from 'src/userCenter/user/feishu/feishu.service';
-import { User } from '@/userCenter/user/user.mongo.entity';
+import { User } from '@/userCenter/user/entities/user.mysql.entity';
 import { UserService } from 'src/userCenter/user/user.service';
 
 @Injectable()
