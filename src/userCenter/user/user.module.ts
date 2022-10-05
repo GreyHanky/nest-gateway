@@ -5,10 +5,10 @@ import { UserService } from './user.service';
 import { UserProviders } from './user.providers';
 import { FeishuController } from './feishu/feishu.controller';
 import { FeishuService } from './feishu/feishu.service';
-import { PrivilageModule } from '../privilege/privilege.module';
+import { RoleModule } from '../role/role.module';
 
 @Module({
-  imports: [DatabaseModule, PrivilageModule],
+  imports: [DatabaseModule, RoleModule],
   controllers: [FeishuController, UserController],
   providers: [...UserProviders, UserService, FeishuService],
   exports: [UserService, FeishuService],

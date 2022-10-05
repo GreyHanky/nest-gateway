@@ -9,6 +9,7 @@ import { DatabaseModule } from '../../common/database/database.module';
 @Module({
   imports: [DatabaseModule, SystemModule, ResourceModule],
   controllers: [PrivilageController],
-  providers: [PrivilageService, ...PrivilageProviders]
+  providers: [PrivilageService, ...PrivilageProviders],
+  exports:[PrivilageService]
 })
 export class PrivilageModule { }
