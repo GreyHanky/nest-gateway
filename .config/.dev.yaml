@@ -40,3 +40,10 @@ REDIS_CONFIG:
   port: 6379         # redis 端口
   auth: "vcxz2012"       # redis 连接密码
   db: 1              # redis 数据库
+
+
+GATEWAY_CONFIG:
+  CACHE_ENABLE: true
+  ROOT_DIR: "./gateway_cache"
+  GATEWAY_FILENAME: "cache"
+  PAGE_DIR: "page"

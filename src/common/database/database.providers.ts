@@ -8,12 +8,14 @@ import { Privilege } from '@/userCenter/privilege/entities/privilege.mysql.entit
 import { RolePrivilege } from '@/userCenter/role-privilege/entities/role-privilege.mysql.entity';
 import { Role } from '../../userCenter/role/entities/role.mysql.entity';
 import { User } from '../../userCenter/user/entities/user.mysql.entity';
+import { NamingStrategy } from './naming.strategies';
 
 // 设置数据库类型
 const { MONGODB_CONFIG, MYSQL_CONFIG } = getConfig();
 
 const MONGODB_DATABASE_CONFIG = {
   ...MONGODB_CONFIG,
+  NamedNodeMap: new NamingStrategy(),
   entities: [
     path.join(
       __dirname,
@@ -24,6 +26,7 @@ const MONGODB_DATABASE_CONFIG = {
 
 const MYSQL_DATABASE_CONFIG = {
   ...MYSQL_CONFIG,
+  NamedNodeMap: new NamingStrategy(),
   entities: [User, UserRole, System, Resource, Privilege, RolePrivilege, Role]
 }
 

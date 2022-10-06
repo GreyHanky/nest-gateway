@@ -7,6 +7,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { AuthModule } from './auth/auth.module';
 import { UserRoleModule } from './userCenter/user-role/user-role.module';
+import { IntercepterModule } from './core/intercepter.module';
 
 @Module({
   imports: [
@@ -25,7 +26,8 @@ import { UserRoleModule } from './userCenter/user-role/user-role.module';
     }),
     // UserModule,
     AuthModule,
-    UserRoleModule
+    UserRoleModule,
+    IntercepterModule
   ],
   controllers: [],
   providers: [

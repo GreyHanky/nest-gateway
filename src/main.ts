@@ -37,7 +37,7 @@ async function bootstrap() {
   app.useGlobalFilters(new AllExceptionsFilter(), new HttpExceptionFilter());
 
   // 设置全局接口前缀
-  app.setGlobalPrefix('api');
+  app.setGlobalPrefix('api', { exclude: ['*'] })
 
   // 格式化 cookie
   app.use(cookieParser());
@@ -48,7 +48,7 @@ async function bootstrap() {
   });
   generateDocument(app);
 
-  await app.listen(3000);
+  await app.listen(80);
 
   if (module.hot) {
     module.hot.accept();
